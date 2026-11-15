@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Война и мир — семьи романа</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Proza+Libre:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Proza Libre", serif;
+      background: radial-gradient(1200px 600px at 50% 0%, #faf6ec 0%, #f5f1e8 60%, #efe9dc 100%);
+      color: #2b2b2b;
+      position: relative;
+      line-height: 1.7;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---------- АНИМИРОВАННЫЙ ФОН ---------- */
+    .bg-particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(139, 131, 106, 0.15);
+      border-radius: 50%;
+      animation: floatParticle linear infinite;
+      pointer-events: none;
+    }
+
+    .particle:nth-child(1) { left: 5%; animation-duration: 18s; animation-delay: 0s; width: 3px; height: 3px; }
+    .particle:nth-child(2) { left: 12%; animation-duration: 22s; animation-delay: 2s; width: 5px; height: 5px; }
+    .particle:nth-child(3) { left: 20%; animation-duration: 16s; animation-delay: 4s; width: 3px; height: 3px; }
+    .particle:nth-child(4) { left: 28%; animation-duration: 20s; animation-delay: 1s; width: 6px; height: 6px; }
+    .particle:nth-child(5) { left: 35%; animation-duration: 24s; animation-delay: 3s; width: 4px; height: 4px; }
+    .particle:nth-child(6) { left: 42%; animation-duration: 19s; animation-delay: 5s; width: 3px; height: 3px; }
+    .particle:nth-child(7) { left: 50%; animation-duration: 21s; animation-delay: 0.5s; width: 5px; height: 5px; }
+    .particle:nth-child(8) { left: 58%; animation-duration: 17s; animation-delay: 2.5s; width: 4px; height: 4px; }
+    .particle:nth-child(9) { left: 65%; animation-duration: 23s; animation-delay: 4.5s; width: 3px; height: 3px; }
+    .particle:nth-child(10) { left: 72%; animation-duration: 20s; animation-delay: 1.5s; width: 6px; height: 6px; }
+    .particle:nth-child(11) { left: 78%; animation-duration: 18s; animation-delay: 3.5s; width: 4px; height: 4px; }
+    .particle:nth-child(12) { left: 85%; animation-duration: 22s; animation-delay: 0s; width: 3px; height: 3px; }
+    .particle:nth-child(13) { left: 92%; animation-duration: 19s; animation-delay: 2s; width: 5px; height: 5px; }
+    .particle:nth-child(14) { left: 8%; animation-duration: 25s; animation-delay: 4s; width: 4px; height: 4px; }
+    .particle:nth-child(15) { left: 48%; animation-duration: 16s; animation-delay: 1s; width: 3px; height: 3px; }
+    .particle:nth-child(16) { left: 95%; animation-duration: 21s; animation-delay: 3s; width: 5px; height: 5px; }
+    .particle:nth-child(17) { left: 15%; animation-duration: 20s; animation-delay: 5s; width: 4px; height: 4px; }
+    .particle:nth-child(18) { left: 55%; animation-duration: 18s; animation-delay: 2s; width: 3px; height: 3px; }
+    .particle:nth-child(19) { left: 68%; animation-duration: 23s; animation-delay: 0.5s; width: 6px; height: 6px; }
+    .particle:nth-child(20) { left: 32%; animation-duration: 17s; animation-delay: 4s; width: 4px; height: 4px; }
+
+    @keyframes floatParticle {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(720deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .particle-slow {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(90, 83, 64, 0.08);
+      border-radius: 50%;
+      animation: floatParticleSlow linear infinite;
+      pointer-events: none;
+    }
+
+    .particle-slow:nth-child(1) { left: 3%; animation-duration: 35s; animation-delay: 0s; }
+    .particle-slow:nth-child(2) { left: 18%; animation-duration: 40s; animation-delay: 5s; }
+    .particle-slow:nth-child(3) { left: 33%; animation-duration: 38s; animation-delay: 10s; }
+    .particle-slow:nth-child(4) { left: 48%; animation-duration: 42s; animation-delay: 3s; }
+    .particle-slow:nth-child(5) { left: 63%; animation-duration: 36s; animation-delay: 8s; }
+    .particle-slow:nth-child(6) { left: 78%; animation-duration: 39s; animation-delay: 12s; }
+    .particle-slow:nth-child(7) { left: 93%; animation-duration: 41s; animation-delay: 6s; }
+    .particle-slow:nth-child(8) { left: 25%; animation-duration: 37s; animation-delay: 15s; }
+    .particle-slow:nth-child(9) { left: 58%; animation-duration: 43s; animation-delay: 2s; }
+    .particle-slow:nth-child(10) { left: 82%; animation-duration: 34s; animation-delay: 9s; }
+
+    @keyframes floatParticleSlow {
+      0% {
+        transform: translateY(110vh) rotate(0deg) scale(0.3);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-15vh) rotate(360deg) scale(1);
+        opacity: 0;
+      }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(0,0,0,0.02),
+          rgba(0,0,0,0.02) 1px,
+          transparent 1px,
+          transparent 3px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          rgba(0,0,0,0.015),
+          rgba(0,0,0,0.015) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      opacity: 0.4;
+      mix-blend-mode: multiply;
+      z-index: 0;
+    }
+
+    h1, h2, h3, .family-card, .quiz-option {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+    }
+
+    .intro, .main, .bio-container, .scroll-top-btn {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- ЦВЕТА СЕМЕЙ ---------- */
+    :root {
+      --bolkonsky: #8b1a1a;
+      --bolkonsky-light: #f5e6e6;
+      --rostov: #2d6a4f;
+      --rostov-light: #e6f2ed;
+      --kuragin: #6a2d8b;
+      --kuragin-light: #f0e6f5;
+      --bezukhov: #b8860b;
+      --bezukhov-light: #f5f0e6;
+    }
+
+    /* ---------- ВСТУПЛЕНИЕ ---------- */
+    .intro {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: rgba(233, 226, 208, 0.92);
+      transition: opacity 1s ease;
+      background-image: 
+        linear-gradient(to bottom, rgba(233, 226, 208, 0.88), rgba(233, 226, 208, 0.88)),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%235a5340' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .intro h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 64px;
+      margin: 0;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      color: #3a3529;
+    }
+
+    .intro p {
+      font-size: 24px;
+      opacity: 0;
+      animation: fadeIn 2s ease 1s forwards;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      color: #5a5340;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .enter-btn {
+      margin-top: 50px;
+      padding: 14px 40px;
+      font-size: 15px;
+      font-family: "Proza Libre", serif;
+      font-weight: 400;
+      background: transparent;
+      border: 2px solid #5a5340;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 2s ease 1.5s forwards;
+      border-radius: 1px;
+      color: #5a5340;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .enter-btn:hover {
+      background: #5a5340;
+      color: #f5f1e8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(90, 83, 64, 0.2);
+    }
+
+    /* ---------- ОСНОВНОЙ БЛОК ---------- */
+    .main {
+      display: none;
+      opacity: 0;
+      padding: 60px 40px 60px;
+      text-align: center;
+      min-height: 100vh;
+      transition: opacity 1s ease;
+    }
+
+    .main.active {
+      opacity: 1;
+    }
+
+    h2 {
+      font-size: 42px;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+      color: #3a3529;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #8b836a, transparent);
+    }
+
+    /* ---------- ПОДСКАЗКА ---------- */
+    .hint {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+      font-style: italic;
+      color: #8b836a;
+      margin: 20px 0 10px;
+      opacity: 0.7;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- ПОИСК ---------- */
+    .search-container {
+      max-width: 500px;
+      margin: 30px auto 20px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-family: "Proza Libre", serif;
+      border: 1px solid #c5bfae;
+      border-radius: 4px;
+      background: rgba(255, 253, 246, 0.8);
+      transition: all 0.3s ease;
+      color: #2b2b2b;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: #8b836a;
+      box-shadow: 0 0 0 3px rgba(139, 131, 106, 0.15);
+      background: #fffdf6;
+    }
+
+    .search-input::placeholder {
+      color: #b0a892;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #b0a892;
+      cursor: pointer;
+      padding: 5px;
+      display: none;
+    }
+
+    .search-clear.visible {
+      display: block;
+    }
+
+    .search-clear:hover {
+      color: #5a5340;
+    }
+
+    .search-results-info {
+      font-size: 14px;
+      color: #8b836a;
+      margin-top: 8px;
+      min-height: 20px;
+    }
+
+    /* ---------- КАРТОЧКИ СЕМЕЙ ---------- */
+    .families {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .family-card {
+      width: 240px;
+      height: 140px;
+      border: 2px solid #8b836a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      background: linear-gradient(180deg, rgba(255, 253, 246, 0.9), rgba(243, 237, 220, 0.9));
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      font-size: 24px;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+    }
+
+    .family-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .family-card[data-family="bolkonsky"]::before {
+      background: var(--bolkonsky);
+    }
+    .family-card[data-family="rostov"]::before {
+      background: var(--rostov);
+    }
+    .family-card[data-family="kuragin"]::before {
+      background: var(--kuragin);
+    }
+    .family-card[data-family="bezukhov"]::before {
+      background: var(--bezukhov);
+    }
+
+    .family-card[data-family="bolkonsky"]:hover {
+      border-color: var(--bolkonsky);
+      box-shadow: 0 8px 25px rgba(139, 26, 26, 0.15);
+    }
+    .family-card[data-family="rostov"]:hover {
+      border-color: var(--rostov);
+      box-shadow: 0 8px 25px rgba(45, 106, 79, 0.15);
+    }
+    .family-card[data-family="kuragin"]:hover {
+      border-color: var(--kuragin);
+      box-shadow: 0 8px 25px rgba(106, 45, 139, 0.15);
+    }
+    .family-card[data-family="bezukhov"]:hover {
+      border-color: var(--bezukhov);
+      box-shadow: 0 8px 25px rgba(184, 134, 11, 0.15);
+    }
+
+    .family-card:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .family-card.hidden {
+      display: none;
+    }
+
+    /* ---------- КНОПКА ВИКТОРИНЫ ---------- */
+    .quiz-btn-wrapper {
+      margin: 30px 0 10px;
+    }
+
+    .quiz-btn {
+      padding: 12px 36px;
+      font-size: 17px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      background: transparent;
+      border: 2px solid #8b836a;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      letter-spacing: 0.8px;
+      color: #5a5340;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 253, 246, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .quiz-btn:hover {
+      background: #5a5340;
+      color: #f5f1e8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(90, 83, 64, 0.2);
+    }
+
+    /* ---------- МОДАЛЬНОЕ ОКНО ВИКТОРИНЫ ---------- */
+    .quiz-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .quiz-overlay.active {
+      display: flex;
+    }
+
+    .quiz-modal {
+      background: linear-gradient(180deg, #fcf9f0, #f5f1e6);
+      border: 2px solid #8b836a;
+      border-radius: 6px;
+      padding: 40px 50px;
+      max-width: 580px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      position: relative;
+      animation: quizIn 0.4s ease;
+    }
+
+    @keyframes quizIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .quiz-modal .close-quiz {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #8b836a;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      line-height: 1;
+    }
+
+    .quiz-modal .close-quiz:hover {
+      color: #5a5340;
+      transform: rotate(90deg);
+    }
+
+    .quiz-modal h3 {
+      font-size: 30px;
+      color: #3a3529;
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .quiz-modal .quiz-subtitle {
+      font-size: 16px;
+      color: #8b836a;
+      margin-bottom: 25px;
+      font-style: italic;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .quiz-progress {
+      font-size: 14px;
+      color: #8b836a;
+      margin-bottom: 18px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .quiz-progress span {
+      font-weight: 600;
+      color: #3a3529;
+    }
+
+    .quiz-question {
+      font-size: 20px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      color: #2b2b2b;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .quiz-option {
+      padding: 14px 20px;
+      border: 2px solid #c5bfae;
+      background: rgba(255, 253, 246, 0.7);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 17px;
+      font-weight: 500;
+      text-align: left;
+      border-radius: 3px;
+      font-family: "Cormorant Garamond", serif;
+      color: #2b2b2b;
+    }
+
+    .quiz-option:hover {
+      border-color: #8b836a;
+      background: rgba(255, 253, 246, 0.95);
+      transform: translateX(4px);
+    }
+
+    .quiz-option.correct {
+      border-color: var(--rostov);
+      background: var(--rostov-light);
+      color: var(--rostov);
+    }
+
+    .quiz-option.wrong {
+      border-color: var(--bolkonsky);
+      background: var(--bolkonsky-light);
+      color: var(--bolkonsky);
+    }
+
+    .quiz-option.disabled {
+      cursor: default;
+      opacity: 0.7;
+    }
+
+    .quiz-option.disabled:hover {
+      transform: none;
+    }
+
+    .quiz-feedback {
+      font-size: 16px;
+      padding: 12px 16px;
+      border-radius: 3px;
+      margin-bottom: 20px;
+      display: none;
+      font-weight: 400;
+    }
+
+    .quiz-feedback.correct {
+      display: block;
+      background: var(--rostov-light);
+      color: var(--rostov);
+      border-left: 4px solid var(--rostov);
+    }
+
+    .quiz-feedback.wrong {
+      display: block;
+      background: var(--bolkonsky-light);
+      color: var(--bolkonsky);
+      border-left: 4px solid var(--bolkonsky);
+    }
+
+    .quiz-next-btn {
+      padding: 12px 32px;
+      font-size: 16px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      background: #8b836a;
+      color: #f5f1e8;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      display: none;
+    }
+
+    .quiz-next-btn:hover {
+      background: #5a5340;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(90, 83, 64, 0.2);
+    }
+
+    .quiz-next-btn.visible {
+      display: inline-block;
+    }
+
+    /* ---------- РЕЗУЛЬТАТЫ ---------- */
+    .quiz-result {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .quiz-result .result-emoji {
+      font-size: 56px;
+      margin-bottom: 10px;
+    }
+
+    .quiz-result .result-score {
+      font-size: 32px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 700;
+      color: #3a3529;
+    }
+
+    .quiz-result .result-text {
+      font-size: 18px;
+      color: #5a5340;
+      margin-top: 8px;
+    }
+
+    .quiz-result .result-detail {
+      font-size: 15px;
+      color: #8b836a;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .quiz-restart-btn {
+      margin-top: 25px;
+      padding: 12px 32px;
+      font-size: 16px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      background: transparent;
+      border: 2px solid #8b836a;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      color: #5a5340;
+      border-radius: 2px;
+    }
+
+    .quiz-restart-btn:hover {
+      background: #5a5340;
+      color: #f5f1e8;
+    }
+
+    /* ---------- ДЕРЕВО ---------- */
+    .tree {
+      display: none;
+      margin-top: 50px;
+      scroll-margin-top: 100px;
+    }
+
+    .tree.active {
+      display: block;
+    }
+
+    .tree.hidden-tree {
+      display: none !important;
+    }
+
+    h3 {
+      font-size: 34px;
+      color: #4a4537;
+      margin-bottom: 40px;
+      font-weight: 600;
+      font-style: italic;
+      position: relative;
+      display: inline-block;
+    }
+
+    h3::before, h3::after {
+      content: '❧';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8b836a;
+      opacity: 0.6;
+    }
+
+    h3::before {
+      left: -50px;
+    }
+
+    h3::after {
+      right: -50px;
+    }
+
+    .tree-level {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin: 40px 0;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .tree-level.animating {
+      opacity: 0;
+      transform: translateY(-15px);
+      animation: grow 0.6s ease forwards;
+    }
+
+    .tree-level.animating:nth-child(2) { animation-delay: 0.1s; }
+    .tree-level.animating:nth-child(3) { animation-delay: 0.2s; }
+    .tree-level.animating:nth-child(4) { animation-delay: 0.3s; }
+    .tree-level.animating:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes grow {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .person {
+      padding: 16px 24px;
+      border: 2px solid #c5bfae;
+      background: linear-gradient(180deg, rgba(255, 253, 246, 0.9), rgba(243, 237, 220, 0.9));
+      font-family: "Cormorant Garamond", serif;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+      transition: all 0.4s ease;
+      font-weight: 500;
+      font-size: 18px;
+      min-width: 160px;
+      max-width: 280px;
+      text-align: center;
+      position: relative;
+      border-radius: 2px;
+      backdrop-filter: blur(4px);
+    }
+
+    .tree-bolkonsky .person {
+      border-color: rgba(139, 26, 26, 0.3);
+    }
+    .tree-bolkonsky .person:hover {
+      border-color: var(--bolkonsky);
+      box-shadow: 0 8px 25px rgba(139, 26, 26, 0.12);
+      background: linear-gradient(180deg, rgba(253, 245, 245, 0.95), rgba(245, 230, 230, 0.95));
+    }
+    .tree-bolkonsky .person.active {
+      border-color: var(--bolkonsky);
+      background: linear-gradient(180deg, rgba(245, 230, 230, 0.95), rgba(232, 208, 208, 0.95));
+      box-shadow: 0 8px 20px rgba(139, 26, 26, 0.15);
+    }
+
+    .tree-rostov .person {
+      border-color: rgba(45, 106, 79, 0.3);
+    }
+    .tree-rostov .person:hover {
+      border-color: var(--rostov);
+      box-shadow: 0 8px 25px rgba(45, 106, 79, 0.12);
+      background: linear-gradient(180deg, rgba(240, 248, 244, 0.95), rgba(230, 242, 237, 0.95));
+    }
+    .tree-rostov .person.active {
+      border-color: var(--rostov);
+      background: linear-gradient(180deg, rgba(230, 242, 237, 0.95), rgba(200, 224, 214, 0.95));
+      box-shadow: 0 8px 20px rgba(45, 106, 79, 0.15);
+    }
+
+    .tree-kuragin .person {
+      border-color: rgba(106, 45, 139, 0.3);
+    }
+    .tree-kuragin .person:hover {
+      border-color: var(--kuragin);
+      box-shadow: 0 8px 25px rgba(106, 45, 139, 0.12);
+      background: linear-gradient(180deg, rgba(248, 244, 250, 0.95), rgba(240, 230, 245, 0.95));
+    }
+    .tree-kuragin .person.active {
+      border-color: var(--kuragin);
+      background: linear-gradient(180deg, rgba(240, 230, 245, 0.95), rgba(224, 208, 232, 0.95));
+      box-shadow: 0 8px 20px rgba(106, 45, 139, 0.15);
+    }
+
+    .tree-bezukhov .person {
+      border-color: rgba(184, 134, 11, 0.3);
+    }
+    .tree-bezukhov .person:hover {
+      border-color: var(--bezukhov);
+      box-shadow: 0 8px 25px rgba(184, 134, 11, 0.12);
+      background: linear-gradient(180deg, rgba(253, 250, 240, 0.95), rgba(245, 240, 230, 0.95));
+    }
+    .tree-bezukhov .person.active {
+      border-color: var(--bezukhov);
+      background: linear-gradient(180deg, rgba(245, 240, 230, 0.95), rgba(232, 224, 208, 0.95));
+      box-shadow: 0 8px 20px rgba(184, 134, 11, 0.15);
+    }
+
+    .person.hidden-person {
+      display: none;
+    }
+
+    /* ---------- БИОГРАФИЯ ---------- */
+    .bio-container {
+      position: fixed;
+      top: 120px;
+      right: 40px;
+      width: 420px;
+      max-height: 550px;
+      background: linear-gradient(180deg, rgba(254, 251, 242, 0.95), rgba(249, 245, 230, 0.95));
+      border: 1px solid #8b836a;
+      padding: 28px 30px;
+      font-size: 15px;
+      line-height: 1.8;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      z-index: 9999;
+      text-align: left;
+      border-radius: 4px;
+      font-family: "Proza Libre", serif;
+      font-weight: 300;
+      overflow-y: auto;
+      backdrop-filter: blur(12px);
+    }
+
+    .bio-container.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .bio-container h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #3a3529;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(139, 131, 106, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .bio-container::after {
+      content: '❧';
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      color: #8b836a;
+      opacity: 0.3;
+      font-size: 20px;
+    }
+
+    .bio-container .bio-link {
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed rgba(111, 106, 87, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .bio-link-bolkonsky { color: var(--bolkonsky); }
+    .bio-link-bolkonsky:hover { border-bottom-color: var(--bolkonsky); }
+
+    .bio-link-rostov { color: var(--rostov); }
+    .bio-link-rostov:hover { border-bottom-color: var(--rostov); }
+
+    .bio-link-kuragin { color: var(--kuragin); }
+    .bio-link-kuragin:hover { border-bottom-color: var(--kuragin); }
+
+    .bio-link-bezukhov { color: var(--bezukhov); }
+    .bio-link-bezukhov:hover { border-bottom-color: var(--bezukhov); }
+
+    .close-bio {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #8b836a;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .close-bio:hover {
+      background: rgba(139, 131, 106, 0.1);
+      color: #5a5340;
+    }
+
+    .bio-family-tag {
+      display: inline-block;
+      padding: 2px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .bio-family-tag.bolkonsky {
+      background: var(--bolkonsky-light);
+      color: var(--bolkonsky);
+    }
+    .bio-family-tag.rostov {
+      background: var(--rostov-light);
+      color: var(--rostov);
+    }
+    .bio-family-tag.kuragin {
+      background: var(--kuragin-light);
+      color: var(--kuragin);
+    }
+    .bio-family-tag.bezukhov {
+      background: var(--bezukhov-light);
+      color: var(--bezukhov);
+    }
+
+    /* ---------- КНОПКА "НАВЕРХ" ---------- */
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #8b836a;
+      background: rgba(255, 253, 246, 0.9);
+      backdrop-filter: blur(8px);
+      color: #5a5340;
+      font-size: 22px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top-btn:hover {
+      background: #5a5340;
+      color: #f5f1e8;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(90, 83, 64, 0.25);
+      border-color: #5a5340;
+    }
+
+    .scroll-top-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      margin-top: 80px;
+      font-size: 14px;
+      opacity: 0.6;
+      padding-top: 40px;
+      border-top: 1px solid rgba(139, 131, 106, 0.3);
+      font-family: "Proza Libre", serif;
+      letter-spacing: 0.5px;
+    }
+
+    .divider {
+      letter-spacing: 8px;
+      color: #8b836a;
+      margin: 30px 0 20px 0;
+      font-size: 20px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+
+    .tree-level:not(:first-child)::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      width: 2px;
+      height: 30px;
+      background: linear-gradient(to bottom, transparent, #8b836a);
+      opacity: 0.3;
+    }
+
+    /* ---------- АДАПТИВ ---------- */
+    @media (max-width: 1200px) {
+      .bio-container {
+        width: 350px;
+        right: 20px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .bio-container {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        width: auto;
+        max-height: 320px;
+        padding: 20px;
+      }
+      
+      .tree-level {
+        gap: 30px;
+      }
+
+      .scroll-top-btn {
+        bottom: 90px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+      }
+
+      .quiz-modal {
+        padding: 30px 25px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tree-level {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .families {
+        gap: 20px;
+      }
+      
+      .family-card {
+        width: 200px;
+        height: 120px;
+        font-size: 20px;
+      }
+      
+      .bio-container {
+        max-height: 260px;
+        padding: 15px;
+        font-size: 14px;
+      }
+      
+      .bio-container h4 {
+        font-size: 20px;
+      }
+
+      .search-container {
+        padding: 0 10px;
+      }
+
+      h3::before, h3::after {
+        display: none;
+      }
+
+      .scroll-top-btn {
+        bottom: 80px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      .hint {
+        font-size: 16px;
+      }
+
+      .quiz-modal {
+        padding: 20px 16px;
+      }
+
+      .quiz-modal h3 {
+        font-size: 24px;
+      }
+
+      .quiz-question {
+        font-size: 18px;
+      }
+
+      .quiz-option {
+        font-size: 15px;
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- АНИМИРОВАННЫЙ ФОН -->
+<div class="bg-particles">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+  <div class="particle-slow"></div>
+</div>
+
+<section class="intro" id="intro">
+  <h1>Л.Н. Толстой</h1>
+  <p>«Война и мир» — семьи романа</p>
+  <button class="enter-btn" onclick="enterSite()">Перейти к семьям</button>
+</section>
+
+<section class="main" id="main">
+  <h2>Главные семьи романа</h2>
+  <div class="divider">✻ ✻ ✻</div>
+
+  <!-- ПОДСКАЗКА -->
+  <div class="hint">✦ Выберите семью, чтобы увидеть её древо ✦</div>
+
+  <!-- ПОИСК -->
+  <div class="search-container">
+    <input class="search-input" id="searchInput" type="text" placeholder="🔍 Найти персонажа по имени..." oninput="searchCharacters(this.value)">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+    <div class="search-results-info" id="searchResultsInfo"></div>
+  </div>
+
+  <div class="families" id="familiesContainer">
+    <div class="family-card" data-family="bolkonsky" onclick="showFamily('bolkonsky')">Болконские</div>
+    <div class="family-card" data-family="rostov" onclick="showFamily('rostov')">Ростовы</div>
+    <div class="family-card" data-family="kuragin" onclick="showFamily('kuragin')">Курагины</div>
+    <div class="family-card" data-family="bezukhov" onclick="showFamily('bezukhov')">Безуховы</div>
+  </div>
+
+  <!-- КНОПКА ВИКТОРИНЫ -->
+  <div class="quiz-btn-wrapper">
+    <button class="quiz-btn" onclick="openQuiz()">📖 Викторина «Угадай персонажа»</button>
+  </div>
+
+  <div class="bio-container" id="bioContainer">
+    <button class="close-bio" onclick="closeBio()">×</button>
+    <h4 id="bioTitle"></h4>
+    <div id="bioContent"></div>
+  </div>
+
+  <!-- ===== БОЛКОНСКИЕ ===== -->
+  <div class="tree tree-bolkonsky" id="bolkonsky" data-family="bolkonsky">
+    <h3>Семья Болконских</h3>
+
+    <div class="tree-level">
+      <div class="person" data-id="nikolai-bolkonsky-senior" 
+           data-name="Николай Андреевич Болконский (старший)" 
+           data-family="bolkonsky"
+           data-bio='<span class="bio-family-tag bolkonsky">Болконские</span>Князь Николай Болконский — бывший генерал-аншеф, служивший при Екатерине II. После отставки жил в имении Лысые Горы, строго регламентируя свою жизнь и воспитание детей — <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андрея</span> и <span class="bio-link bio-link-bolkonsky" data-target="marya-bolkonskaya">Марьи</span>. Был назначен главнокомандующим ополчения в 1806 году. В 1812 году отказался покидать имение перед лицом французской армии, намереваясь организовать оборону. Однако его планы сорвали два инсульта, от которых он скончался 15 августа 1812 года.'
+           onclick="showBio(this)">
+        Николай Андреевич Болконский
+      </div>
+    </div>
+
+    <div class="tree-level">
+      <div class="person" data-id="andrei-bolkonsky"
+           data-name="Андрей Николаевич Болконский" 
+           data-family="bolkonsky"
+           data-bio='<span class="bio-family-tag bolkonsky">Болконские</span>Князь Андрей Болконский — сын <span class="bio-link bio-link-bolkonsky" data-target="nikolai-bolkonsky-senior">Николая Болконского</span>, один из главных героев романа. В начале произведения был женат на <span class="bio-link bio-link-bolkonsky" data-target="elizaveta-bolkonskaya">Лизе Болконской</span>, но их семейная жизнь не приносила ему счастья. Участвовал в войне 1805 года, был тяжело ранен в битве при Аустерлице. После смерти жены посвятил себя воспитанию сына <span class="bio-link bio-link-bolkonsky" data-target="nikolenka-bolkonsky">Николеньки</span> и управлению имением. Позже познакомился с <span class="bio-link bio-link-rostov" data-target="natasha-rostova">Наташей Ростовой</span> и обручился с ней, однако после её увлечения <span class="bio-link bio-link-kuragin" data-target="anatol-kuragin">Анатолем Курагиным</span> разорвал помолвку. Во время Отечественной войны 1812 года снова отправился на фронт, был смертельно ранен в Бородинском сражении. Перед смертью простил Наташу, которая ухаживала за ним, и примирился с сестрой <span class="bio-link bio-link-bolkonsky" data-target="marya-bolkonskaya">Марьей</span>.'
+           onclick="showBio(this)">
+        Андрей Николаевич Болконский
+      </div>
+
+      <div class="person" data-id="marya-bolkonskaya"
+           data-name="Марья Николаевна Болконская" 
+           data-family="bolkonsky"
+           data-bio='<span class="bio-family-tag bolkonsky">Болконские</span>Княжна Марья Болконская — дочь <span class="bio-link bio-link-bolkonsky" data-target="nikolai-bolkonsky-senior">Николая Болконского</span>, сестра <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андрея</span>. Отличалась глубокой религиозностью, добротой и самоотверженностью. Долгое время жила в Лысых Горах, терпеливо заботясь о суровом отце и выполняя все его требования. Была очень привязана к брату Андрею и искренне любила его сына <span class="bio-link bio-link-bolkonsky" data-target="nikolenka-bolkonsky">Николеньку</span>. После смерти отца и брата взяла на себя заботу о племяннике. Во время войны познакомилась с <span class="bio-link bio-link-rostov" data-target="nikolai-rostov">Николаем Ростовым</span>, который помог ей спастись от крестьянского бунта. Позже они поженились, и Марья стала хозяйкой семьи Ростовых, сохранив добрые отношения с <span class="bio-link bio-link-rostov" data-target="natasha-rostova">Наташей Ростовой</span> и воспитывая Николеньку Андреевича как родного сына.'
+           onclick="showBio(this)">
+        Марья Николаевна Болконская
+      </div>
+    </div>
+
+    <div class="tree-level">
+      <div class="person" data-id="elizaveta-bolkonskaya"
+           data-name="Елизавета (Лиза) Болконская" 
+           data-family="bolkonsky"
+           data-bio='<span class="bio-family-tag bolkonsky">Болконские</span>Лиза Болконская — жена князя <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андрея Болконского</span>. Молодая, жизнерадостная и красивая женщина, известная своей «маленькой верхней губкой». Во время ухода мужа на войну жила в Лысых Горах вместе со свёкром <span class="bio-link bio-link-bolkonsky" data-target="nikolai-bolkonsky-senior">Николаем Андреевичем</span> и <span class="bio-link bio-link-bolkonsky" data-target="marya-bolkonskaya">Марьей</span>, где чувствовала себя одинокой и несчастной. Родила сына <span class="bio-link bio-link-bolkonsky" data-target="nikolenka-bolkonsky">Николеньку</span>, но вскоре умерла при родах. Её смерть стала тяжёлым потрясением для Андрея и во многом изменила его взгляды на жизнь.'
+           onclick="showBio(this)">
+        Елизавета Болконская
+      </div>
+
+      <div class="person" data-id="nikolenka-bolkonsky"
+           data-name="Николенька Болконский" 
+           data-family="bolkonsky"
+           data-bio='<span class="bio-family-tag bolkonsky">Болконские</span>Николенька Болконский — сын князя <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андрея</span> и <span class="bio-link bio-link-bolkonsky" data-target="elizaveta-bolkonskaya">Лизы Болконской</span>, внук <span class="bio-link bio-link-bolkonsky" data-target="nikolai-bolkonsky-senior">Николая Андреевича Болконского</span>. После смерти матери воспитывался тётей <span class="bio-link bio-link-bolkonsky" data-target="marya-bolkonskaya">Марьей</span>, которая окружила его заботой и любовью. После гибели отца продолжал жить в семье Марьи и <span class="bio-link bio-link-rostov" data-target="nikolai-rostov">Николая Ростова</span>, где рос вместе с их детьми. Николенька искренне восхищался памятью своего отца и мечтал стать таким же честным, благородным и мужественным человеком. В эпилоге романа он особенно близок с <span class="bio-link bio-link-bezukhov" data-target="pierre-bezukhov">Пьером Безуховым</span>, чьи идеи и рассказы производят на мальчика сильное впечатление.'
+           onclick="showBio(this)">
+        Николенька Болконский
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== РОСТОВЫ ===== -->
+  <div class="tree tree-rostov" id="rostov" data-family="rostov">
+    <h3>Семья Ростовых</h3>
+
+    <div class="tree-level">
+      <div class="person" data-id="ilya-rostov"
+           data-name="Илья Андреевич Ростов" 
+           data-family="rostov"
+           data-bio='<span class="bio-family-tag rostov">Ростовы</span>Граф Илья Андреевич Ростов — добрый, щедрый и гостеприимный глава семьи Ростовых. Очень любил жену <span class="bio-link bio-link-rostov" data-target="natalya-rostova">Наталью</span> и детей — <span class="bio-link bio-link-rostov" data-target="vera-rostova">Веру</span>, <span class="bio-link bio-link-rostov" data-target="nikolai-rostov">Николая</span>, <span class="bio-link bio-link-rostov" data-target="natasha-rostova">Наташу</span> и <span class="bio-link bio-link-rostov" data-target="petya-rostov">Петю</span>. Часто устраивал балы и праздники, из-за чего постепенно разорил своё состояние. Поддерживал сына Николая во время службы в армии, переживал за Наташу после её разрыва с князем <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андреем Болконским</span> и тяжело перенёс смерть младшего сына Пети. Умер вскоре после Отечественной войны 1812 года.'
+           onclick="showBio(this)">
+        Илья Андреевич Ростов
+      </div>
+
+      <div class="person" data-id="natalya-rostova"
+           data-name="Наталья (графиня) Ростова" 
+           data-family="rostov"
+           data-bio='<span class="bio-family-tag rostov">Ростовы</span>Графиня Наталья Ростова — жена графа <span class="bio-link bio-link-rostov" data-target="ilya-rostov">Ильи Ростова</span> и заботливая мать семейства. Особенно была привязана к <span class="bio-link bio-link-rostov" data-target="natasha-rostova">Наташе</span> и <span class="bio-link bio-link-rostov" data-target="petya-rostov">Пете</span>, сильно переживала за детей. Поддерживала <span class="bio-link bio-link-rostov" data-target="nikolai-rostov">Николая</span> во время войны, тяжело перенесла гибель Пети. После смерти мужа жила вместе с детьми, а заботу о семье взяли на себя Николай и Наташа.'
+           onclick="showBio(this)">
+        Графиня Наталья Ростова
+      </div>
+    </div>
+
+    <div class="tree-level">
+      <div class="person" data-id="vera-rostova"
+           data-name="Вера Ростова" 
+           data-family="rostov"
+           data-bio='<span class="bio-family-tag rostov">Ростовы</span>Вера Ростова — старшая дочь Ростовых, рассудительная, строгая и сдержанная. Часто не понимала эмоциональности <span class="bio-link bio-link-rostov" data-target="natasha-rostova">Наташи</span> и других членов семьи, из-за чего казалась холодной. Вышла замуж за Бориса Друбецкого, после чего почти перестала участвовать в жизни семьи.'
+           onclick="showBio(this)">
+        Вера Ростова
+      </div>
+
+      <div class="person" data-id="nikolai-rostov"
+           data-name="Николай Ростов" 
+           data-family="rostov"
+           data-bio='<span class="bio-family-tag rostov">Ростовы</span>Николай Ростов — старший сын Ростовых, офицер русской армии. Участвовал в кампаниях 1805–1812 годов, дружил с Денисовым и служил вместе с ним. Был влюблён в <span class="bio-link bio-link-rostov" data-target="sonya">Соню</span>, но позже женился на княжне <span class="bio-link bio-link-bolkonsky" data-target="marya-bolkonskaya">Марье Болконской</span>, что помогло спасти семью от разорения. После смерти отца <span class="bio-link bio-link-rostov" data-target="ilya-rostov">Ильи Андреевича</span> стал главой семьи и заботился о матери и близких.'
+           onclick="showBio(this)">
+        Николай Ростов
+      </div>
+
+      <div class="person" data-id="natasha-rostova"
+           data-name="Наташа Ростова" 
+           data-family="rostov"
+           data-bio='<span class="bio-family-tag rostov">Ростовы</span>Наташа Ростова — младшая дочь Ростовых, жизнерадостная, искренняя и эмоциональная девушка. Была дружна с братом <span class="bio-link bio-link-rostov" data-target="nikolai-rostov">Николаем</span> и двоюродной сестрой <span class="bio-link bio-link-rostov" data-target="sonya">Соней</span>. Полюбила князя <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андрея Болконского</span>, но из-за увлечения <span class="bio-link bio-link-kuragin" data-target="anatol-kuragin">Анатолем Курагиным</span> их помолвка была расторгнута. Во время войны помогала раненым, в том числе Андрею, которого сопровождала до его смерти. Позже вышла замуж за <span class="bio-link bio-link-bezukhov" data-target="pierre-bezukhov">Пьера Безухова</span> и стала матерью большого семейства.'
+           onclick="showBio(this)">
+        Наташа Ростова
+      </div>
+
+      <div class="person" data-id="petya-rostov"
+           data-name="Петя Ростов" 
+           data-family="rostov"
+           data-bio='<span class="bio-family-tag rostov">Ростовы</span>Пётр (Петя) Ростов — младший сын Ростовых. Восхищался военными подвигами старшего брата <span class="bio-link bio-link-rostov" data-target="nikolai-rostov">Николая</span> и мечтал попасть на фронт. Несмотря на юный возраст, участвовал в Отечественной войне 1812 года. Сражался в партизанском отряде Денисова, где погиб во время одной из атак. Его смерть стала тяжёлым ударом для всей семьи.'
+           onclick="showBio(this)">
+        Петя Ростов
+      </div>
+    </div>
+
+    <div class="tree-level">
+      <div class="person" data-id="sonya"
+           data-name="Соня" 
+           data-family="rostov"
+           data-bio='<span class="bio-family-tag rostov">Ростовы</span>Соня — бедная родственница Ростовых, воспитанная в их семье. С детства любила <span class="bio-link bio-link-rostov" data-target="nikolai-rostov">Николая Ростова</span> и долго была его невестой, но ради счастья семьи отказалась от брака с ним. Оставалась рядом с графиней <span class="bio-link bio-link-rostov" data-target="natalya-rostova">Натальей Ростовой</span>, помогала ей после смерти <span class="bio-link bio-link-rostov" data-target="petya-rostov">Пети</span> и графа <span class="bio-link bio-link-rostov" data-target="ilya-rostov">Ильи</span>, посвятив свою жизнь заботе о близких.'
+           onclick="showBio(this)">
+        Соня
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== КУРАГИНЫ ===== -->
+  <div class="tree tree-kuragin" id="kuragin" data-family="kuragin">
+    <h3>Семья Курагиных</h3>
+
+    <div class="tree-level">
+      <div class="person" data-id="vasily-kuragin"
+           data-name="Князь Василий Курагин" 
+           data-family="kuragin"
+           data-bio='<span class="bio-family-tag kuragin">Курагины</span>Князь Василий Курагин — влиятельный придворный, хитрый и расчётливый аристократ. Отец <span class="bio-link bio-link-kuragin" data-target="helen-kuragina">Элен</span>, <span class="bio-link bio-link-kuragin" data-target="anatol-kuragin">Анатоля</span> и <span class="bio-link bio-link-kuragin" data-target="ippolit-kuragin">Ипполита</span> Курагиных. Стремился выгодно устроить судьбу своих детей, используя знакомства и связи. Организовал брак Элен с <span class="bio-link bio-link-bezukhov" data-target="pierre-bezukhov">Пьером Безуховым</span>, а также пытался женить Анатоля на княжне <span class="bio-link bio-link-bolkonsky" data-target="marya-bolkonskaya">Марье Болконской</span>. Его планы часто строились на личной выгоде, а не на счастье детей.'
+           onclick="showBio(this)">
+        Князь Василий Курагин
+      </div>
+    </div>
+
+    <div class="tree-level">
+      <div class="person" data-id="helen-kuragina"
+           data-name="Элен Курагина (Безухова)" 
+           data-family="kuragin"
+           data-bio='<span class="bio-family-tag kuragin">Курагины</span>Элен Курагина (Безухова) — дочь князя <span class="bio-link bio-link-kuragin" data-target="vasily-kuragin">Василия Курагина</span>, признанная красавица петербургского общества. По настоянию отца вышла замуж за <span class="bio-link bio-link-bezukhov" data-target="pierre-bezukhov">Пьера Безухова</span>, однако их брак оказался несчастливым. Вела светскую жизнь, имела многочисленные романы и почти не общалась с мужем. Позже добивалась развода, чтобы снова выгодно выйти замуж, но вскоре умерла.'
+           onclick="showBio(this)">
+        Элен Курагина (Безухова)
+      </div>
+
+      <div class="person" data-id="anatol-kuragin"
+           data-name="Анатоль Курагин" 
+           data-family="kuragin"
+           data-bio='<span class="bio-family-tag kuragin">Курагины</span>Анатоль Курагин — сын князя <span class="bio-link bio-link-kuragin" data-target="vasily-kuragin">Василия Курагина</span>, красивый, беспечный и легкомысленный офицер. Был дружен с Фёдором Долоховым, вместе с которым пытался тайно увезти <span class="bio-link bio-link-rostov" data-target="natasha-rostova">Наташу Ростову</span>, несмотря на её помолвку с князем <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андреем Болконским</span> и собственный тайный брак Анатоля. Позже участвовал в Отечественной войне 1812 года, где был тяжело ранен и лишился ноги.'
+           onclick="showBio(this)">
+        Анатоль Курагин
+      </div>
+
+      <div class="person" data-id="ippolit-kuragin"
+           data-name="Ипполит Курагин" 
+           data-family="kuragin"
+           data-bio='<span class="bio-family-tag kuragin">Курагины</span>Ипполит Курагин — старший сын князя <span class="bio-link bio-link-kuragin" data-target="vasily-kuragin">Василия Курагина</span>, неловкий и недалёкий молодой человек. Служил дипломатом и вращался в высшем обществе. Часто попадал в неловкие ситуации из-за своей рассеянности и странного поведения. В отличие от брата <span class="bio-link bio-link-kuragin" data-target="anatol-kuragin">Анатоля</span>, почти не принимал участия в основных событиях романа и оставался второстепенным персонажем.'
+           onclick="showBio(this)">
+        Ипполит Курагин
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== БЕЗУХОВЫ ===== -->
+  <div class="tree tree-bezukhov" id="bezukhov" data-family="bezukhov">
+    <h3>Семья Безуховых</h3>
+
+    <div class="tree-level">
+      <div class="person" data-id="kirill-bezukhov"
+           data-name="Кирилл Владимирович Безухов" 
+           data-family="bezukhov"
+           data-bio='<span class="bio-family-tag bezukhov">Безуховы</span>Граф Кирилл Владимирович Безухов — один из самых богатых и влиятельных вельмож Российской империи, отец <span class="bio-link bio-link-bezukhov" data-target="pierre-bezukhov">Пьера Безухова</span>. Перед смертью признал Пьера своим законным наследником, благодаря чему тот получил огромное состояние и титул графа. За его наследство боролись князь <span class="bio-link bio-link-kuragin" data-target="vasily-kuragin">Василий Курагин</span> и другие родственники, стремившиеся получить часть богатства.'
+           onclick="showBio(this)">
+        Кирилл Владимирович Безухов
+      </div>
+    </div>
+
+    <div class="tree-level">
+      <div class="person" data-id="pierre-bezukhov"
+           data-name="Пьер Безухов" 
+           data-family="bezukhov"
+           data-bio='<span class="bio-family-tag bezukhov">Безуховы</span>Пьер Безухов — незаконнорождённый, а затем признанный сын графа <span class="bio-link bio-link-bezukhov" data-target="kirill-bezukhov">Кирилла Безухова</span>, один из главных героев романа. После смерти отца стал одним из самых богатых людей России. По настоянию князя <span class="bio-link bio-link-kuragin" data-target="vasily-kuragin">Василия Курагина</span> женился на <span class="bio-link bio-link-kuragin" data-target="helen-kuragina">Элен Курагиной</span>, но их брак оказался несчастливым. Дружил с князем <span class="bio-link bio-link-bolkonsky" data-target="andrei-bolkonsky">Андреем Болконским</span>, участвовал в Бородинском сражении, пережил французский плен и духовное переосмысление жизни. После смерти Андрея сблизился с <span class="bio-link bio-link-rostov" data-target="natasha-rostova">Наташей Ростовой</span> и женился на ней, создав счастливую семью.'
+           onclick="showBio(this)">
+        Пьер Безухов
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Учебный проект по роману Л.Н. Толстого «Война и мир»
+  </footer>
+</section>
+
+<!-- ===== МОДАЛЬНОЕ ОКНО ВИКТОРИНЫ ===== -->
+<div class="quiz-overlay" id="quizOverlay">
+  <div class="quiz-modal">
+    <button class="close-quiz" onclick="closeQuiz()">×</button>
+    <h3>📖 Угадай персонажа</h3>
+    <div class="quiz-subtitle">Проверьте, как хорошо вы знаете героев романа</div>
+    <div id="quizContent">
+      <!-- сюда динамически вставляются вопросы или результаты -->
+    </div>
+  </div>
+</div>
+
+<!-- КНОПКА "НАВЕРХ" -->
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" aria-label="Наверх">
+  ↑
+</button>
+
+<script>
+  // ---------- ОСНОВНАЯ ЛОГИКА ----------
+  let currentActivePerson = null;
+  let currentBioPersonElement = null;
+  let searchQuery = '';
+
+  function enterSite() {
+    const intro = document.getElementById("intro");
+    const main = document.getElementById("main");
+    
+    intro.style.opacity = '0';
+    
+    setTimeout(() => {
+      intro.style.display = "none";
+      main.style.display = "block";
+      
+      setTimeout(() => {
+        main.classList.add("active");
+      }, 50);
+    }, 1000);
+  }
+
+  function showFamily(id) {
+    document.querySelectorAll(".tree").forEach(tree => {
+      tree.classList.remove("active");
+    });
+    
+    const selectedTree = document.getElementById(id);
+    if (selectedTree) {
+      selectedTree.classList.add("active");
+      
+      const levels = selectedTree.querySelectorAll('.tree-level');
+      levels.forEach(level => {
+        level.classList.remove('animating');
+        setTimeout(() => {
+          level.classList.add('animating');
+        }, 10);
+      });
+
+      setTimeout(() => {
+        selectedTree.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+      }, 200);
+    }
+    
+    closeBio();
+    applySearch(searchQuery);
+  }
+
+  function showBio(personElement) {
+    if (currentActivePerson) {
+      currentActivePerson.classList.remove('active');
+    }
+    
+    personElement.classList.add('active');
+    currentActivePerson = personElement;
+    currentBioPersonElement = personElement;
+    
+    const name = personElement.getAttribute('data-name');
+    const bio = personElement.getAttribute('data-bio');
+    
+    document.getElementById('bioTitle').textContent = name;
+    document.getElementById('bioContent').innerHTML = bio;
+    
+    document.getElementById('bioContainer').classList.add('active');
+
+    document.querySelectorAll('#bioContent .bio-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetId = this.getAttribute('data-target');
+        const targetElement = document.querySelector(`.person[data-id="${targetId}"]`);
+        if (targetElement) {
+          const parentTree = targetElement.closest('.tree');
+          if (parentTree && !parentTree.classList.contains('active')) {
+            document.querySelectorAll('.tree').forEach(t => t.classList.remove('active'));
+            parentTree.classList.add('active');
+            
+            const levels = parentTree.querySelectorAll('.tree-level');
+            levels.forEach(level => {
+              level.classList.remove('animating');
+              setTimeout(() => {
+                level.classList.add('animating');
+              }, 10);
+            });
+
+            setTimeout(() => {
+              parentTree.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest'
+              });
+            }, 200);
+          }
+          showBio(targetElement);
+        }
+      });
+    });
+  }
+
+  function closeBio() {
+    document.getElementById('bioContainer').classList.remove('active');
+    
+    if (currentActivePerson) {
+      currentActivePerson.classList.remove('active');
+      currentActivePerson = null;
+      currentBioPersonElement = null;
+    }
+  }
+
+  function searchCharacters(query) {
+    searchQuery = query.trim().toLowerCase();
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('searchClear');
+    const infoDiv = document.getElementById('searchResultsInfo');
+    
+    if (searchQuery) {
+      clearBtn.classList.add('visible');
+    } else {
+      clearBtn.classList.remove('visible');
+    }
+    
+    const allPersons = document.querySelectorAll('.person');
+    let foundCount = 0;
+    let familyHasMatch = {};
+    
+    allPersons.forEach(person => {
+      const name = person.getAttribute('data-name').toLowerCase();
+      const family = person.closest('.tree');
+      const familyId = family ? family.id : null;
+      
+      if (searchQuery && name.includes(searchQuery)) {
+        person.classList.remove('hidden-person');
+        foundCount++;
+        if (familyId) familyHasMatch[familyId] = true;
+      } else if (searchQuery) {
+        person.classList.add('hidden-person');
+      } else {
+        person.classList.remove('hidden-person');
+      }
+    });
+    
+    document.querySelectorAll('.tree').forEach(tree => {
+      const treeId = tree.id;
+      if (searchQuery) {
+        if (familyHasMatch[treeId]) {
+          tree.classList.remove('hidden-tree');
+          tree.classList.add('active');
+          const levels = tree.querySelectorAll('.tree-level');
+          levels.forEach(level => {
+            level.classList.remove('animating');
+            setTimeout(() => {
+              level.classList.add('animating');
+            }, 10);
+          });
+        } else {
+          tree.classList.remove('active');
+          tree.classList.add('hidden-tree');
+        }
+      } else {
+        tree.classList.remove('hidden-tree');
+      }
+    });
+    
+    document.querySelectorAll('.family-card').forEach(card => {
+      const family = card.getAttribute('data-family');
+      if (searchQuery) {
+        if (familyHasMatch[family]) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      } else {
+        card.classList.remove('hidden');
+      }
+    });
+    
+    if (searchQuery) {
+      infoDiv.textContent = foundCount > 0 ? `Найдено: ${foundCount} персонаж(ей)` : 'Ничего не найдено';
+    } else {
+      infoDiv.textContent = '';
+    }
+  }
+
+  function applySearch(query) {
+    if (query !== undefined && query !== null) {
+      searchCharacters(query);
+    } else {
+      searchCharacters(searchQuery);
+    }
+  }
+
+  function clearSearch() {
+    document.getElementById('searchInput').value = '';
+    searchCharacters('');
+    document.getElementById('searchInput').focus();
+  }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  document.addEventListener('scroll', function() {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 300) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+
+  document.addEventListener('click', function(event) {
+    const bioContainer = document.getElementById('bioContainer');
+    const isClickInsideBio = bioContainer.contains(event.target);
+    const isPersonClick = event.target.classList.contains('person') || 
+                          event.target.closest('.person');
+    const isBioLink = event.target.classList.contains('bio-link');
+    
+    if (!isClickInsideBio && !isPersonClick && !isBioLink && bioContainer.classList.contains('active')) {
+      closeBio();
+    }
+  });
+  
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeBio();
+      closeQuiz();
+    }
+    if (event.key === '/' && !event.target.matches('input, textarea, select')) {
+      event.preventDefault();
+      document.getElementById('searchInput').focus();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("intro").style.display = "flex";
+    document.getElementById("main").style.display = "none";
+  });
+
+  // ---------- ВИКТОРИНА ----------
+  const quizQuestions = [
+    {
+      question: 'Кто из героев был тяжело ранен в битве при Аустерлице и пережил духовное перерождение?',
+      options: ['Пьер Безухов', 'Андрей Болконский', 'Николай Ростов', 'Анатоль Курагин'],
+      correct: 1
+    },
+    {
+      question: 'Кто из героинь романа вышла замуж за Пьера Безухова в финале?',
+      options: ['Марья Болконская', 'Элен Курагина', 'Наташа Ростова', 'Соня'],
+      correct: 2
+    },
+    {
+      question: 'Кто из персонажей пытался тайно увезти Наташу Ростову, будучи уже женатым?',
+      options: ['Андрей Болконский', 'Фёдор Долохов', 'Анатоль Курагин', 'Борис Друбецкой'],
+      correct: 2
+    },
+    {
+      question: 'Кто из героев стал наследником огромного состояния графа Кирилла Безухова?',
+      options: ['Пьер Безухов', 'Василий Курагин', 'Андрей Болконский', 'Николай Ростов'],
+      correct: 0
+    },
+    {
+      question: 'Кто из Ростовых погиб во время Отечественной войны 1812 года в партизанском отряде?',
+      options: ['Николай Ростов', 'Петя Ростов', 'Илья Андреевич Ростов', 'Вера Ростова'],
+      correct: 1
+    },
+    {
+      question: 'Кто из героинь была известна своей «маленькой верхней губкой» и умерла при родах?',
+      options: ['Наташа Ростова', 'Марья Болконская', 'Лиза Болконская', 'Элен Курагина'],
+      correct: 2
+    },
+    {
+      question: 'Кто из героев женился на Марье Болконской, помогая своей семье избежать разорения?',
+      options: ['Пьер Безухов', 'Андрей Болконский', 'Николай Ростов', 'Анатоль Курагин'],
+      correct: 2
+    }
+  ];
+
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let quizStarted = false;
+
+  function openQuiz() {
+    document.getElementById('quizOverlay').classList.add('active');
+    currentQuestionIndex = 0;
+    score = 0;
+    quizStarted = true;
+    renderQuestion();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeQuiz() {
+    document.getElementById('quizOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function renderQuestion() {
+    const container = document.getElementById('quizContent');
+    
+    if (currentQuestionIndex >= quizQuestions.length) {
+      // Результаты
+      const total = quizQuestions.length;
+      const percent = Math.round((score / total) * 100);
+      let emoji, text;
+      if (percent === 100) { emoji = '🌟'; text = 'Идеально! Вы настоящий знаток!'; }
+      else if (percent >= 80) { emoji = '📚'; text = 'Отлично! Вы хорошо помните роман.'; }
+      else if (percent >= 60) { emoji = '🤔'; text = 'Неплохо, но стоит перечитать «Войну и мир».'; }
+      else if (percent >= 40) { emoji = '📖'; text = 'Стоит вспомнить ключевых героев.'; }
+      else { emoji = '😅'; text = 'Попробуйте ещё раз — роман того стоит!'; }
+
+      container.innerHTML = `
+        <div class="quiz-result">
+          <div class="result-emoji">${emoji}</div>
+          <div class="result-score">${score} / ${total}</div>
+          <div class="result-text">${text}</div>
+          <div class="result-detail">Вы ответили правильно на ${score} из ${total} вопросов (${percent}%)</div>
+          <button class="quiz-restart-btn" onclick="restartQuiz()">🔄 Пройти ещё раз</button>
+        </div>
+      `;
+      return;
+    }
+
+    const q = quizQuestions[currentQuestionIndex];
+    const progress = currentQuestionIndex + 1;
+
+    let optionsHTML = q.options.map((opt, idx) => `
+      <div class="quiz-option" data-index="${idx}" onclick="selectOption(this, ${idx})">
+        ${String.fromCharCode(65 + idx)}. ${opt}
+      </div>
+    `).join('');
+
+    container.innerHTML = `
+      <div class="quiz-progress">Вопрос <span>${progress}</span> из <span>${quizQuestions.length}</span></div>
+      <div class="quiz-question">${q.question}</div>
+      <div class="quiz-options" id="quizOptions">
+        ${optionsHTML}
+      </div>
+      <div class="quiz-feedback" id="quizFeedback"></div>
+      <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">Следующий вопрос →</button>
+    `;
+
+    // Сброс состояния
+    document.getElementById('quizNextBtn').classList.remove('visible');
+    document.getElementById('quizFeedback').className = 'quiz-feedback';
+  }
+
+  function selectOption(element, index) {
+    const q = quizQuestions[currentQuestionIndex];
+    const options = document.querySelectorAll('.quiz-option');
+    const feedback = document.getElementById('quizFeedback');
+    const nextBtn = document.getElementById('quizNextBtn');
+
+    // Если уже выбрано — игнорируем
+    if (options[0].classList.contains('disabled')) return;
+
+    // Блокируем все варианты
+    options.forEach(opt => opt.classList.add('disabled'));
+
+    const isCorrect = (index === q.correct);
+    if (isCorrect) {
+      element.classList.add('correct');
+      score++;
+      feedback.className = 'quiz-feedback correct';
+      feedback.textContent = '✅ Верно! Отличная память!';
+    } else {
+      element.classList.add('wrong');
+      options[q.correct].classList.add('correct');
+      feedback.className = 'quiz-feedback wrong';
+      feedback.textContent = `❌ Неверно. Правильный ответ: ${q.options[q.correct]}`;
+    }
+
+    nextBtn.classList.add('visible');
+  }
+
+  function nextQuestion() {
+    currentQuestionIndex++;
+    renderQuestion();
+  }
+
+  function restartQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    renderQuestion();
+  }
+
+  // Закрытие по клику на оверлей
+  document.getElementById('quizOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeQuiz();
+  });
+</script>
+
+</body>
+</html>
